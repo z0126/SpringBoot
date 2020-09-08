@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<!--html的元素都可以被thymeleaf替代接管，形式如下   th:元素名-->
+<div th:text="${msg}"></div>
+<!--转义-->
+<div th:utext="${msg}"></div>
+<hr>
+<h3 th:each="user:${user}" th:text="${user}"></h3>
+<h4>行内式</h4>
+<h3 th:each="user:${user}">[[${user}]]</h3>
+</body>
+</html>

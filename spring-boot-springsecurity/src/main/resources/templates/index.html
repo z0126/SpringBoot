@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--登陆注销-->
+<div>
+    <!--如果未登录-->
+    <div sec:authorize="!isAuthenticated()">
+        <a th:href="@{/toLogin}">登录</a>
+    </div>
+    <!--如果登录：用户名，注销-->
+    <div sec:authorize="isAuthenticated()">
+        <a>
+            用户名：<span sec:authentication="name"></span>
+      <!--      角  色：<sapn sec:authentication="principal.getAuthorities()"></sapn>-->
+        </a>
+        <a th:href="@{/logout}">注销</a>
+    </div>
+</div>
+<ul>
+    <li sec:authorize="hasRole('vip1')">leavl1
+        <ol>
+            <li><a href="/leave1/1">leavl1.1</a></li>
+            <li><a href="/leave1/2">leavl1.2</a></li>
+            <li><a href="/leave1/3">leavl1.3</a></li>
+        </ol>
+    </li>
+    <li sec:authorize="hasRole('vip2')">leavl2
+        <ol>
+            <li><a href="/leave2/1">leavl2.1</a></li>
+            <li><a href="/leave2/2">leavl2.2</a></li>
+            <li><a href="/leave2/3">leavl2.3</a></li>
+        </ol>
+    </li>
+    <!--假设有vip3的权限，显示此元素-->
+    <li sec:authorize="hasRole('vip3')">leavl3
+        <ol>
+            <li><a href="/leave3/1">leavl3.1</a></li>
+            <li><a href="/leave3/2">leavl3.2</a></li>
+            <li><a href="/leave3/3">leavl3.3</a></li>
+        </ol>
+    </li>
+</ul>
+</body>
+</html>

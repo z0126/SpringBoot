@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.thymeleaf.org/thymeleaf-extras-shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style type="text/css">
+        li{
+            background-color: aqua;
+            display: block;
+            float: left;
+            list-style: none;
+            opacity: 0.5;
+            margin: 0 30px;
+            border-left:5px whitesmoke solid;
+            border-right:5px whitesmoke solid;
+        }
+        li:hover{
+            opacity: 1;
+        }
+        li a:link{
+            text-decoration: none;
+        }
+        li a:visited{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<h2>首页</h2>
+<p th:text="${msg}"></p>
+<ul>
+    <div th:if="${session.user==null}">
+        <li><a th:href="@{/ToLogin}">登录</a></li>
+    </div>
+    <div shiro:hasPermission="user:add">
+        <li><a th:href="@{/user/add}">adduser</a></li>
+    </div>
+    <div shiro:hasPermission="user:update">
+        <li><a th:href="@{/user/update}">updateuser</a></li>
+    </div>
+    <li><a th:href="@{/logout}">退出</a></li>
+</ul>
+</body>
+</html>

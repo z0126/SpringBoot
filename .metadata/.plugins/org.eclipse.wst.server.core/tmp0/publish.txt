@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Tue Aug 25 17:27:01 CST 2020
+org.eclipse.jst.jee.server\:ttms_dl=F\:\\Java\\apache-tomcat-7.0.105\\webapps\\ttms_dl
+org.eclipse.jst.jee.server\:SSM-XM=F\:\\Java\\apache-tomcat-7.0.105\\webapps\\SSM-XM

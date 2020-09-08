@@ -1,0 +1,23 @@
+#---此处能配置的东西，一定会存在一个XXXproperties文件，
+#XXXAutoConfiguration（META-INF下）：默认值 XXXproperties和配置文件绑定，我们就可以使用自定义的配置
+#原理：spring boot会帮我们自动装配，其存在默认值，会从XXXproperties去除默认值，如果想修改可以在配置文件进行修改
+#也可以使用随机的占位符如下所示
+#如果user.hello存在则使用user.hello的值如果不存在则使用hello加上后面的——wc
+#输出日志,查看那些自动配置类生效，那些没有生效
+#debug: true
+users:
+  name: ${users.hello:hello}_qingjiang
+  age: 9
+dog:
+  name: 阿黄
+
+#springboot的多环境配置，可以选择激活哪一个
+#properties文件需要逐一创建，但yaml文件则不必如此，yaml文件中两条“---”表示一个文件
+spring:
+  profiles:
+    active: test2
+---
+server:
+     port: 8083
+spring:
+  profiles: test2
